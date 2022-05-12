@@ -66,7 +66,10 @@ public class PlayerController : MonoBehaviour
         }
         if (other.gameObject.tag == "Goal")
         {
+            WinLoseImage.gameObject.SetActive(true);
             WinLoseText.text = "You Win!";
+            WinLoseText.color = Color.black;
+            WinLoseImage.color = Color.green;
         }
     }
 
@@ -87,4 +90,5 @@ public class PlayerController : MonoBehaviour
     public Text scoreText;
     public Text healthText;
     public Text WinLoseText;
+    public Image WinLoseImage;
 }
