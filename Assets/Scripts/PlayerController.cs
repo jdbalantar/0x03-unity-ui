@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
@@ -17,8 +18,12 @@ public class PlayerController : MonoBehaviour
     {
         if (health == 0)
         {
-            Debug.Log("Game Over!");
-            SceneManager.LoadScene(scene.name, LoadSceneMode.Single);
+            //Debug.Log("Game Over!");
+            WinLoseImage.gameObject.SetActive(true);
+            WinLoseText.text = "Game Over!";
+            WinLoseText.color = Color.white;
+            WinLoseImage.color = Color.red;
+            StartCoroutine(LoadScene(3));
         }
     }
 
@@ -70,6 +75,7 @@ public class PlayerController : MonoBehaviour
             WinLoseText.text = "You Win!";
             WinLoseText.color = Color.black;
             WinLoseImage.color = Color.green;
+            StartCoroutine(LoadScene(3));
         }
     }
 
@@ -80,6 +86,11 @@ public class PlayerController : MonoBehaviour
     void SetHealthText()
     {
         healthText.text = $"Health: {health}";
+    }
+    IEnumerator LoadScene(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        SceneManager.LoadScene(scene.name, LoadSceneMode.Single);
     }
 
     public Rigidbody rb;
