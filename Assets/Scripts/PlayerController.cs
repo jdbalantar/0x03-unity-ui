@@ -66,7 +66,7 @@ public class PlayerController : MonoBehaviour
         }
         if (other.gameObject.tag == "Goal")
         {
-            Debug.Log("You win!");
+            WinLoseText.text = "You Win!";
         }
     }
 
@@ -86,4 +86,5 @@ public class PlayerController : MonoBehaviour
     private Scene scene;
     public Text scoreText;
     public Text healthText;
+    public Text WinLoseText;
 }
